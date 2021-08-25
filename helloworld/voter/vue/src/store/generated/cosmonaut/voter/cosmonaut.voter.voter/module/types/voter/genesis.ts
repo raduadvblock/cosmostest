@@ -1,6 +1,7 @@
 /* eslint-disable */
 import * as Long from 'long'
 import { util, configure, Writer, Reader } from 'protobufjs/minimal'
+import { CustomMessage } from '../voter/custom_message'
 import { Vote } from '../voter/vote'
 import { Poll } from '../voter/poll'
 
@@ -9,6 +10,8 @@ export const protobufPackage = 'cosmonaut.voter.voter'
 /** GenesisState defines the voter module's genesis state. */
 export interface GenesisState {
   /** this line is used by starport scaffolding # genesis/proto/state */
+  customMessage: CustomMessage | undefined
+  /** this line is used by starport scaffolding # genesis/proto/stateField */
   voteList: Vote[]
   /** this line is used by starport scaffolding # genesis/proto/stateField */
   voteCount: number
@@ -22,6 +25,9 @@ const baseGenesisState: object = { voteCount: 0, pollCount: 0 }
 
 export const GenesisState = {
   encode(message: GenesisState, writer: Writer = Writer.create()): Writer {
+    if (message.customMessage !== undefined) {
+      CustomMessage.encode(message.customMessage, writer.uint32(42).fork()).ldelim()
+    }
     for (const v of message.voteList) {
       Vote.encode(v!, writer.uint32(26).fork()).ldelim()
     }
@@ -46,6 +52,9 @@ export const GenesisState = {
     while (reader.pos < end) {
       const tag = reader.uint32()
       switch (tag >>> 3) {
+        case 5:
+          message.customMessage = CustomMessage.decode(reader, reader.uint32())
+          break
         case 3:
           message.voteList.push(Vote.decode(reader, reader.uint32()))
           break
@@ -70,6 +79,11 @@ export const GenesisState = {
     const message = { ...baseGenesisState } as GenesisState
     message.voteList = []
     message.pollList = []
+    if (object.customMessage !== undefined && object.customMessage !== null) {
+      message.customMessage = CustomMessage.fromJSON(object.customMessage)
+    } else {
+      message.customMessage = undefined
+    }
     if (object.voteList !== undefined && object.voteList !== null) {
       for (const e of object.voteList) {
         message.voteList.push(Vote.fromJSON(e))
@@ -95,6 +109,7 @@ export const GenesisState = {
 
   toJSON(message: GenesisState): unknown {
     const obj: any = {}
+    message.customMessage !== undefined && (obj.customMessage = message.customMessage ? CustomMessage.toJSON(message.customMessage) : undefined)
     if (message.voteList) {
       obj.voteList = message.voteList.map((e) => (e ? Vote.toJSON(e) : undefined))
     } else {
@@ -114,6 +129,11 @@ export const GenesisState = {
     const message = { ...baseGenesisState } as GenesisState
     message.voteList = []
     message.pollList = []
+    if (object.customMessage !== undefined && object.customMessage !== null) {
+      message.customMessage = CustomMessage.fromPartial(object.customMessage)
+    } else {
+      message.customMessage = undefined
+    }
     if (object.voteList !== undefined && object.voteList !== null) {
       for (const e of object.voteList) {
         message.voteList.push(Vote.fromPartial(e))

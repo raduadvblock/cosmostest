@@ -9,6 +9,10 @@ import (
 
 func RegisterCodec(cdc *codec.LegacyAmino) {
 	// this line is used by starport scaffolding # 2
+	cdc.RegisterConcrete(&MsgCreateCustomMessage{}, "voter/CreateCustomMessage", nil)
+	cdc.RegisterConcrete(&MsgUpdateCustomMessage{}, "voter/UpdateCustomMessage", nil)
+	cdc.RegisterConcrete(&MsgDeleteCustomMessage{}, "voter/DeleteCustomMessage", nil)
+
 	cdc.RegisterConcrete(&MsgCreateVote{}, "voter/CreateVote", nil)
 	cdc.RegisterConcrete(&MsgUpdateVote{}, "voter/UpdateVote", nil)
 	cdc.RegisterConcrete(&MsgDeleteVote{}, "voter/DeleteVote", nil)
@@ -21,6 +25,11 @@ func RegisterCodec(cdc *codec.LegacyAmino) {
 
 func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {
 	// this line is used by starport scaffolding # 3
+	registry.RegisterImplementations((*sdk.Msg)(nil),
+		&MsgCreateCustomMessage{},
+		&MsgUpdateCustomMessage{},
+		&MsgDeleteCustomMessage{},
+	)
 	registry.RegisterImplementations((*sdk.Msg)(nil),
 		&MsgCreateVote{},
 		&MsgUpdateVote{},

@@ -2,6 +2,7 @@ syntax = "proto3";
 package cosmonaut.voter.voter;
 
 // this line is used by starport scaffolding # proto/tx/import
+import "voter/custom_message.proto";
 import "voter/vote.proto";
 import "voter/poll.proto";
 
@@ -10,6 +11,9 @@ option go_package = "github.com/cosmonaut/voter/x/voter/types";
 // Msg defines the Msg service.
 service Msg {
     // this line is used by starport scaffolding # proto/tx/rpc
+  rpc CreateCustomMessage(MsgCreateCustomMessage) returns (MsgCreateCustomMessageResponse);
+  rpc UpdateCustomMessage(MsgUpdateCustomMessage) returns (MsgUpdateCustomMessageResponse);
+  rpc DeleteCustomMessage(MsgDeleteCustomMessage) returns (MsgDeleteCustomMessageResponse);
   rpc CreateVote(MsgCreateVote) returns (MsgCreateVoteResponse);
   rpc UpdateVote(MsgUpdateVote) returns (MsgUpdateVoteResponse);
   rpc DeleteVote(MsgDeleteVote) returns (MsgDeleteVoteResponse);
@@ -19,6 +23,23 @@ service Msg {
 }
 
 // this line is used by starport scaffolding # proto/tx/message
+message MsgCreateCustomMessage {
+  string creator = 1;
+  string customValue = 3;
+}
+message MsgCreateCustomMessageResponse { }
+
+message MsgUpdateCustomMessage {
+  string creator = 1;
+  string customValue = 3;
+}
+message MsgUpdateCustomMessageResponse { }
+
+message MsgDeleteCustomMessage {
+  string creator = 1;
+}
+message MsgDeleteCustomMessageResponse { }
+
 message MsgCreateVote {
   string creator = 1;
   string pollID = 2;

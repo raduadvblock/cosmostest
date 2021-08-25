@@ -130,12 +130,26 @@ export class HttpClient {
     }
 }
 /**
- * @title voter/genesis.proto
+ * @title voter/custom_message.proto
  * @version version not set
  */
 export class Api extends HttpClient {
     constructor() {
         super(...arguments);
+        /**
+         * No description
+         *
+         * @tags Query
+         * @name QueryCustomMessage
+         * @summary Queries a customMessage by index.
+         * @request GET:/cosmonaut/voter/voter/customMessage
+         */
+        this.queryCustomMessage = (params = {}) => this.request({
+            path: `/cosmonaut/voter/voter/customMessage`,
+            method: "GET",
+            format: "json",
+            ...params,
+        });
         /**
          * No description
          *

@@ -34,3 +34,7 @@ const (
 	VoteKey      = "Vote-value-"
 	VoteCountKey = "Vote-count-"
 )
+
+const (
+	CustomMessageKey = "CustomMessage-value-"
+)

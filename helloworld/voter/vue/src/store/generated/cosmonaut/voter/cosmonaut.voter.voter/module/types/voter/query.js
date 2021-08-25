@@ -1,10 +1,94 @@
 /* eslint-disable */
 import { Reader, util, configure, Writer } from 'protobufjs/minimal';
 import * as Long from 'long';
+import { CustomMessage } from '../voter/custom_message';
 import { Vote } from '../voter/vote';
 import { PageRequest, PageResponse } from '../cosmos/base/query/v1beta1/pagination';
 import { Poll } from '../voter/poll';
 export const protobufPackage = 'cosmonaut.voter.voter';
+const baseQueryGetCustomMessageRequest = {};
+export const QueryGetCustomMessageRequest = {
+    encode(_, writer = Writer.create()) {
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof Uint8Array ? new Reader(input) : input;
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseQueryGetCustomMessageRequest };
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(_) {
+        const message = { ...baseQueryGetCustomMessageRequest };
+        return message;
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
+    },
+    fromPartial(_) {
+        const message = { ...baseQueryGetCustomMessageRequest };
+        return message;
+    }
+};
+const baseQueryGetCustomMessageResponse = {};
+export const QueryGetCustomMessageResponse = {
+    encode(message, writer = Writer.create()) {
+        if (message.CustomMessage !== undefined) {
+            CustomMessage.encode(message.CustomMessage, writer.uint32(10).fork()).ldelim();
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof Uint8Array ? new Reader(input) : input;
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseQueryGetCustomMessageResponse };
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.CustomMessage = CustomMessage.decode(reader, reader.uint32());
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        const message = { ...baseQueryGetCustomMessageResponse };
+        if (object.CustomMessage !== undefined && object.CustomMessage !== null) {
+            message.CustomMessage = CustomMessage.fromJSON(object.CustomMessage);
+        }
+        else {
+            message.CustomMessage = undefined;
+        }
+        return message;
+    },
+    toJSON(message) {
+        const obj = {};
+        message.CustomMessage !== undefined && (obj.CustomMessage = message.CustomMessage ? CustomMessage.toJSON(message.CustomMessage) : undefined);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = { ...baseQueryGetCustomMessageResponse };
+        if (object.CustomMessage !== undefined && object.CustomMessage !== null) {
+            message.CustomMessage = CustomMessage.fromPartial(object.CustomMessage);
+        }
+        else {
+            message.CustomMessage = undefined;
+        }
+        return message;
+    }
+};
 const baseQueryGetVoteRequest = { id: 0 };
 export const QueryGetVoteRequest = {
     encode(message, writer = Writer.create()) {
@@ -466,6 +550,11 @@ export const QueryAllPollResponse = {
 export class QueryClientImpl {
     constructor(rpc) {
         this.rpc = rpc;
+    }
+    CustomMessage(request) {
+        const data = QueryGetCustomMessageRequest.encode(request).finish();
+        const promise = this.rpc.request('cosmonaut.voter.voter.Query', 'CustomMessage', data);
+        return promise.then((data) => QueryGetCustomMessageResponse.decode(new Reader(data)));
     }
     Vote(request) {
         const data = QueryGetVoteRequest.encode(request).finish();

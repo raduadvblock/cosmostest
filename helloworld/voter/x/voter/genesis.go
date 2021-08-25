@@ -10,6 +10,11 @@ import (
 // state.
 func InitGenesis(ctx sdk.Context, k keeper.Keeper, genState types.GenesisState) {
 	// this line is used by starport scaffolding # genesis/module/init
+	// Set if defined
+	if genState.CustomMessage != nil {
+		k.SetCustomMessage(ctx, *genState.CustomMessage)
+	}
+
 	// Set all the vote
 	for _, elem := range genState.VoteList {
 		k.SetVote(ctx, *elem)
@@ -34,6 +39,12 @@ func ExportGenesis(ctx sdk.Context, k keeper.Keeper) *types.GenesisState {
 	genesis := types.DefaultGenesis()
 
 	// this line is used by starport scaffolding # genesis/module/export
+	// Get all customMessage
+	customMessage, found := k.GetCustomMessage(ctx)
+	if found {
+		genesis.CustomMessage = &customMessage
+	}
+
 	// Get all vote
 	voteList := k.GetAllVote(ctx)
 	for _, elem := range voteList {

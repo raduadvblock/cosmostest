@@ -2,6 +2,7 @@ syntax = "proto3";
 package cosmonaut.voter.voter;
 
 // this line is used by starport scaffolding # genesis/proto/import
+import "voter/custom_message.proto";
 import "voter/vote.proto";
 import "voter/poll.proto";
 
@@ -10,6 +11,7 @@ option go_package = "github.com/cosmonaut/voter/x/voter/types";
 // GenesisState defines the voter module's genesis state.
 message GenesisState {
     // this line is used by starport scaffolding # genesis/proto/state
+		CustomMessage customMessage = 5; // this line is used by starport scaffolding # genesis/proto/stateField
 		repeated Vote voteList = 3; // this line is used by starport scaffolding # genesis/proto/stateField
 		uint64 voteCount = 4; // this line is used by starport scaffolding # genesis/proto/stateField
 		repeated Poll pollList = 1; // this line is used by starport scaffolding # genesis/proto/stateField
