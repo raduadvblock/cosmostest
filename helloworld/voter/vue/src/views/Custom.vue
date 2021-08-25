@@ -5,16 +5,18 @@
 			<h3>
 				Voter Module
 			</h3>
-			<CustomMessage />
+			<CustomMessageForm />
+            <TheMessage />
 		</div>
 	</div>
 </template>
 
 <script>
-import CustomMessage from "../components/CustomMessage";
+import CustomMessageForm from "../components/CustomMessageForm";
+import TheMessage from "../components/TheMessage";
 
 export default {
   name: 'Custom',
-  components: { CustomMessage },
+  components: { CustomMessageForm, TheMessage },
 }
 </script>

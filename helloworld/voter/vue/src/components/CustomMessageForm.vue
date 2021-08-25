@@ -14,7 +14,7 @@
 </template>
 <script>
 export default {
-  name: "CustomMessage",
+  name: "CustomMessageForm",
   data() {
     return {
       custom_message: "",
