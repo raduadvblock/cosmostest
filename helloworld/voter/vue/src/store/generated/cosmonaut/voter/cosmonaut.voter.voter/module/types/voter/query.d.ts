@@ -1,9 +1,15 @@
 import { Reader, Writer } from 'protobufjs/minimal';
+import { CustomMessage } from '../voter/custom_message';
 import { Vote } from '../voter/vote';
 import { PageRequest, PageResponse } from '../cosmos/base/query/v1beta1/pagination';
 import { Poll } from '../voter/poll';
 export declare const protobufPackage = "cosmonaut.voter.voter";
 /** this line is used by starport scaffolding # 3 */
+export interface QueryGetCustomMessageRequest {
+}
+export interface QueryGetCustomMessageResponse {
+    CustomMessage: CustomMessage | undefined;
+}
 export interface QueryGetVoteRequest {
     id: number;
 }
@@ -30,6 +36,20 @@ export interface QueryAllPollResponse {
     Poll: Poll[];
     pagination: PageResponse | undefined;
 }
+export declare const QueryGetCustomMessageRequest: {
+    encode(_: QueryGetCustomMessageRequest, writer?: Writer): Writer;
+    decode(input: Reader | Uint8Array, length?: number): QueryGetCustomMessageRequest;
+    fromJSON(_: any): QueryGetCustomMessageRequest;
+    toJSON(_: QueryGetCustomMessageRequest): unknown;
+    fromPartial(_: DeepPartial<QueryGetCustomMessageRequest>): QueryGetCustomMessageRequest;
+};
+export declare const QueryGetCustomMessageResponse: {
+    encode(message: QueryGetCustomMessageResponse, writer?: Writer): Writer;
+    decode(input: Reader | Uint8Array, length?: number): QueryGetCustomMessageResponse;
+    fromJSON(object: any): QueryGetCustomMessageResponse;
+    toJSON(message: QueryGetCustomMessageResponse): unknown;
+    fromPartial(object: DeepPartial<QueryGetCustomMessageResponse>): QueryGetCustomMessageResponse;
+};
 export declare const QueryGetVoteRequest: {
     encode(message: QueryGetVoteRequest, writer?: Writer): Writer;
     decode(input: Reader | Uint8Array, length?: number): QueryGetVoteRequest;
@@ -88,6 +108,8 @@ export declare const QueryAllPollResponse: {
 };
 /** Query defines the gRPC querier service. */
 export interface Query {
+    /** Queries a customMessage by index. */
+    CustomMessage(request: QueryGetCustomMessageRequest): Promise<QueryGetCustomMessageResponse>;
     /** Queries a vote by id. */
     Vote(request: QueryGetVoteRequest): Promise<QueryGetVoteResponse>;
     /** Queries a list of vote items. */
@@ -100,6 +122,7 @@ export interface Query {
 export declare class QueryClientImpl implements Query {
     private readonly rpc;
     constructor(rpc: Rpc);
+    CustomMessage(request: QueryGetCustomMessageRequest): Promise<QueryGetCustomMessageResponse>;
     Vote(request: QueryGetVoteRequest): Promise<QueryGetVoteResponse>;
     VoteAll(request: QueryAllVoteRequest): Promise<QueryAllVoteResponse>;
     Poll(request: QueryGetPollRequest): Promise<QueryGetPollResponse>;

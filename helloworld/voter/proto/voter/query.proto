@@ -4,6 +4,7 @@ package cosmonaut.voter.voter;
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 // this line is used by starport scaffolding # 1
+import "voter/custom_message.proto";
 import "voter/vote.proto";
 import "voter/poll.proto";
 
@@ -12,6 +13,12 @@ option go_package = "github.com/cosmonaut/voter/x/voter/types";
 // Query defines the gRPC querier service.
 service Query {
     // this line is used by starport scaffolding # 2
+
+	// Queries a customMessage by index.
+	rpc CustomMessage(QueryGetCustomMessageRequest) returns (QueryGetCustomMessageResponse) {
+		option (google.api.http).get = "/cosmonaut/voter/voter/customMessage";
+	}
+
 
 	// Queries a vote by id.
 	rpc Vote(QueryGetVoteRequest) returns (QueryGetVoteResponse) {
@@ -37,6 +44,11 @@ service Query {
 }
 
 // this line is used by starport scaffolding # 3
+message QueryGetCustomMessageRequest {}
+
+message QueryGetCustomMessageResponse {
+	CustomMessage CustomMessage = 1;
+}
 message QueryGetVoteRequest {
 	uint64 id = 1;
 }

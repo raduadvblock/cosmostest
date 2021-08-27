@@ -5,6 +5,26 @@ import * as Long from 'long'
 export const protobufPackage = 'cosmonaut.voter.voter'
 
 /** this line is used by starport scaffolding # proto/tx/message */
+export interface MsgCreateCustomMessage {
+  creator: string
+  customValue: string
+}
+
+export interface MsgCreateCustomMessageResponse {}
+
+export interface MsgUpdateCustomMessage {
+  creator: string
+  customValue: string
+}
+
+export interface MsgUpdateCustomMessageResponse {}
+
+export interface MsgDeleteCustomMessage {
+  creator: string
+}
+
+export interface MsgDeleteCustomMessageResponse {}
+
 export interface MsgCreateVote {
   creator: string
   pollID: string
@@ -56,6 +76,319 @@ export interface MsgDeletePoll {
 }
 
 export interface MsgDeletePollResponse {}
+
+const baseMsgCreateCustomMessage: object = { creator: '', customValue: '' }
+
+export const MsgCreateCustomMessage = {
+  encode(message: MsgCreateCustomMessage, writer: Writer = Writer.create()): Writer {
+    if (message.creator !== '') {
+      writer.uint32(10).string(message.creator)
+    }
+    if (message.customValue !== '') {
+      writer.uint32(26).string(message.customValue)
+    }
+    return writer
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgCreateCustomMessage {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input
+    let end = length === undefined ? reader.len : reader.pos + length
+    const message = { ...baseMsgCreateCustomMessage } as MsgCreateCustomMessage
+    while (reader.pos < end) {
+      const tag = reader.uint32()
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string()
+          break
+        case 3:
+          message.customValue = reader.string()
+          break
+        default:
+          reader.skipType(tag & 7)
+          break
+      }
+    }
+    return message
+  },
+
+  fromJSON(object: any): MsgCreateCustomMessage {
+    const message = { ...baseMsgCreateCustomMessage } as MsgCreateCustomMessage
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator)
+    } else {
+      message.creator = ''
+    }
+    if (object.customValue !== undefined && object.customValue !== null) {
+      message.customValue = String(object.customValue)
+    } else {
+      message.customValue = ''
+    }
+    return message
+  },
+
+  toJSON(message: MsgCreateCustomMessage): unknown {
+    const obj: any = {}
+    message.creator !== undefined && (obj.creator = message.creator)
+    message.customValue !== undefined && (obj.customValue = message.customValue)
+    return obj
+  },
+
+  fromPartial(object: DeepPartial<MsgCreateCustomMessage>): MsgCreateCustomMessage {
+    const message = { ...baseMsgCreateCustomMessage } as MsgCreateCustomMessage
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator
+    } else {
+      message.creator = ''
+    }
+    if (object.customValue !== undefined && object.customValue !== null) {
+      message.customValue = object.customValue
+    } else {
+      message.customValue = ''
+    }
+    return message
+  }
+}
+
+const baseMsgCreateCustomMessageResponse: object = {}
+
+export const MsgCreateCustomMessageResponse = {
+  encode(_: MsgCreateCustomMessageResponse, writer: Writer = Writer.create()): Writer {
+    return writer
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgCreateCustomMessageResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input
+    let end = length === undefined ? reader.len : reader.pos + length
+    const message = { ...baseMsgCreateCustomMessageResponse } as MsgCreateCustomMessageResponse
+    while (reader.pos < end) {
+      const tag = reader.uint32()
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7)
+          break
+      }
+    }
+    return message
+  },
+
+  fromJSON(_: any): MsgCreateCustomMessageResponse {
+    const message = { ...baseMsgCreateCustomMessageResponse } as MsgCreateCustomMessageResponse
+    return message
+  },
+
+  toJSON(_: MsgCreateCustomMessageResponse): unknown {
+    const obj: any = {}
+    return obj
+  },
+
+  fromPartial(_: DeepPartial<MsgCreateCustomMessageResponse>): MsgCreateCustomMessageResponse {
+    const message = { ...baseMsgCreateCustomMessageResponse } as MsgCreateCustomMessageResponse
+    return message
+  }
+}
+
+const baseMsgUpdateCustomMessage: object = { creator: '', customValue: '' }
+
+export const MsgUpdateCustomMessage = {
+  encode(message: MsgUpdateCustomMessage, writer: Writer = Writer.create()): Writer {
+    if (message.creator !== '') {
+      writer.uint32(10).string(message.creator)
+    }
+    if (message.customValue !== '') {
+      writer.uint32(26).string(message.customValue)
+    }
+    return writer
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgUpdateCustomMessage {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input
+    let end = length === undefined ? reader.len : reader.pos + length
+    const message = { ...baseMsgUpdateCustomMessage } as MsgUpdateCustomMessage
+    while (reader.pos < end) {
+      const tag = reader.uint32()
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string()
+          break
+        case 3:
+          message.customValue = reader.string()
+          break
+        default:
+          reader.skipType(tag & 7)
+          break
+      }
+    }
+    return message
+  },
+
+  fromJSON(object: any): MsgUpdateCustomMessage {
+    const message = { ...baseMsgUpdateCustomMessage } as MsgUpdateCustomMessage
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator)
+    } else {
+      message.creator = ''
+    }
+    if (object.customValue !== undefined && object.customValue !== null) {
+      message.customValue = String(object.customValue)
+    } else {
+      message.customValue = ''
+    }
+    return message
+  },
+
+  toJSON(message: MsgUpdateCustomMessage): unknown {
+    const obj: any = {}
+    message.creator !== undefined && (obj.creator = message.creator)
+    message.customValue !== undefined && (obj.customValue = message.customValue)
+    return obj
+  },
+
+  fromPartial(object: DeepPartial<MsgUpdateCustomMessage>): MsgUpdateCustomMessage {
+    const message = { ...baseMsgUpdateCustomMessage } as MsgUpdateCustomMessage
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator
+    } else {
+      message.creator = ''
+    }
+    if (object.customValue !== undefined && object.customValue !== null) {
+      message.customValue = object.customValue
+    } else {
+      message.customValue = ''
+    }
+    return message
+  }
+}
+
+const baseMsgUpdateCustomMessageResponse: object = {}
+
+export const MsgUpdateCustomMessageResponse = {
+  encode(_: MsgUpdateCustomMessageResponse, writer: Writer = Writer.create()): Writer {
+    return writer
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgUpdateCustomMessageResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input
+    let end = length === undefined ? reader.len : reader.pos + length
+    const message = { ...baseMsgUpdateCustomMessageResponse } as MsgUpdateCustomMessageResponse
+    while (reader.pos < end) {
+      const tag = reader.uint32()
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7)
+          break
+      }
+    }
+    return message
+  },
+
+  fromJSON(_: any): MsgUpdateCustomMessageResponse {
+    const message = { ...baseMsgUpdateCustomMessageResponse } as MsgUpdateCustomMessageResponse
+    return message
+  },
+
+  toJSON(_: MsgUpdateCustomMessageResponse): unknown {
+    const obj: any = {}
+    return obj
+  },
+
+  fromPartial(_: DeepPartial<MsgUpdateCustomMessageResponse>): MsgUpdateCustomMessageResponse {
+    const message = { ...baseMsgUpdateCustomMessageResponse } as MsgUpdateCustomMessageResponse
+    return message
+  }
+}
+
+const baseMsgDeleteCustomMessage: object = { creator: '' }
+
+export const MsgDeleteCustomMessage = {
+  encode(message: MsgDeleteCustomMessage, writer: Writer = Writer.create()): Writer {
+    if (message.creator !== '') {
+      writer.uint32(10).string(message.creator)
+    }
+    return writer
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgDeleteCustomMessage {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input
+    let end = length === undefined ? reader.len : reader.pos + length
+    const message = { ...baseMsgDeleteCustomMessage } as MsgDeleteCustomMessage
+    while (reader.pos < end) {
+      const tag = reader.uint32()
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string()
+          break
+        default:
+          reader.skipType(tag & 7)
+          break
+      }
+    }
+    return message
+  },
+
+  fromJSON(object: any): MsgDeleteCustomMessage {
+    const message = { ...baseMsgDeleteCustomMessage } as MsgDeleteCustomMessage
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator)
+    } else {
+      message.creator = ''
+    }
+    return message
+  },
+
+  toJSON(message: MsgDeleteCustomMessage): unknown {
+    const obj: any = {}
+    message.creator !== undefined && (obj.creator = message.creator)
+    return obj
+  },
+
+  fromPartial(object: DeepPartial<MsgDeleteCustomMessage>): MsgDeleteCustomMessage {
+    const message = { ...baseMsgDeleteCustomMessage } as MsgDeleteCustomMessage
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator
+    } else {
+      message.creator = ''
+    }
+    return message
+  }
+}
+
+const baseMsgDeleteCustomMessageResponse: object = {}
+
+export const MsgDeleteCustomMessageResponse = {
+  encode(_: MsgDeleteCustomMessageResponse, writer: Writer = Writer.create()): Writer {
+    return writer
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgDeleteCustomMessageResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input
+    let end = length === undefined ? reader.len : reader.pos + length
+    const message = { ...baseMsgDeleteCustomMessageResponse } as MsgDeleteCustomMessageResponse
+    while (reader.pos < end) {
+      const tag = reader.uint32()
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7)
+          break
+      }
+    }
+    return message
+  },
+
+  fromJSON(_: any): MsgDeleteCustomMessageResponse {
+    const message = { ...baseMsgDeleteCustomMessageResponse } as MsgDeleteCustomMessageResponse
+    return message
+  },
+
+  toJSON(_: MsgDeleteCustomMessageResponse): unknown {
+    const obj: any = {}
+    return obj
+  },
+
+  fromPartial(_: DeepPartial<MsgDeleteCustomMessageResponse>): MsgDeleteCustomMessageResponse {
+    const message = { ...baseMsgDeleteCustomMessageResponse } as MsgDeleteCustomMessageResponse
+    return message
+  }
+}
 
 const baseMsgCreateVote: object = { creator: '', pollID: '', option: '' }
 
@@ -870,6 +1203,9 @@ export const MsgDeletePollResponse = {
 /** Msg defines the Msg service. */
 export interface Msg {
   /** this line is used by starport scaffolding # proto/tx/rpc */
+  CreateCustomMessage(request: MsgCreateCustomMessage): Promise<MsgCreateCustomMessageResponse>
+  UpdateCustomMessage(request: MsgUpdateCustomMessage): Promise<MsgUpdateCustomMessageResponse>
+  DeleteCustomMessage(request: MsgDeleteCustomMessage): Promise<MsgDeleteCustomMessageResponse>
   CreateVote(request: MsgCreateVote): Promise<MsgCreateVoteResponse>
   UpdateVote(request: MsgUpdateVote): Promise<MsgUpdateVoteResponse>
   DeleteVote(request: MsgDeleteVote): Promise<MsgDeleteVoteResponse>
@@ -883,6 +1219,24 @@ export class MsgClientImpl implements Msg {
   constructor(rpc: Rpc) {
     this.rpc = rpc
   }
+  CreateCustomMessage(request: MsgCreateCustomMessage): Promise<MsgCreateCustomMessageResponse> {
+    const data = MsgCreateCustomMessage.encode(request).finish()
+    const promise = this.rpc.request('cosmonaut.voter.voter.Msg', 'CreateCustomMessage', data)
+    return promise.then((data) => MsgCreateCustomMessageResponse.decode(new Reader(data)))
+  }
+
+  UpdateCustomMessage(request: MsgUpdateCustomMessage): Promise<MsgUpdateCustomMessageResponse> {
+    const data = MsgUpdateCustomMessage.encode(request).finish()
+    const promise = this.rpc.request('cosmonaut.voter.voter.Msg', 'UpdateCustomMessage', data)
+    return promise.then((data) => MsgUpdateCustomMessageResponse.decode(new Reader(data)))
+  }
+
+  DeleteCustomMessage(request: MsgDeleteCustomMessage): Promise<MsgDeleteCustomMessageResponse> {
+    const data = MsgDeleteCustomMessage.encode(request).finish()
+    const promise = this.rpc.request('cosmonaut.voter.voter.Msg', 'DeleteCustomMessage', data)
+    return promise.then((data) => MsgDeleteCustomMessageResponse.decode(new Reader(data)))
+  }
+
   CreateVote(request: MsgCreateVote): Promise<MsgCreateVoteResponse> {
     const data = MsgCreateVote.encode(request).finish()
     const promise = this.rpc.request('cosmonaut.voter.voter.Msg', 'CreateVote', data)

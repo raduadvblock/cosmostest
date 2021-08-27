@@ -79,6 +79,13 @@ export interface V1Beta1PageResponse {
   total?: string;
 }
 
+export interface VoterCustomMessage {
+  creator?: string;
+  customValue?: string;
+}
+
+export type VoterMsgCreateCustomMessageResponse = object;
+
 export interface VoterMsgCreatePollResponse {
   /** @format uint64 */
   id?: string;
@@ -89,9 +96,13 @@ export interface VoterMsgCreateVoteResponse {
   id?: string;
 }
 
+export type VoterMsgDeleteCustomMessageResponse = object;
+
 export type VoterMsgDeletePollResponse = object;
 
 export type VoterMsgDeleteVoteResponse = object;
+
+export type VoterMsgUpdateCustomMessageResponse = object;
 
 export type VoterMsgUpdatePollResponse = object;
 
@@ -134,6 +145,10 @@ export interface VoterQueryAllVoteResponse {
    *  }
    */
   pagination?: V1Beta1PageResponse;
+}
+
+export interface VoterQueryGetCustomMessageResponse {
+  CustomMessage?: VoterCustomMessage;
 }
 
 export interface VoterQueryGetPollResponse {
@@ -345,10 +360,26 @@ export class HttpClient<SecurityDataType = unknown> {
 }
 
 /**
- * @title voter/genesis.proto
+ * @title voter/custom_message.proto
  * @version version not set
  */
 export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDataType> {
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryCustomMessage
+   * @summary Queries a customMessage by index.
+   * @request GET:/cosmonaut/voter/voter/customMessage
+   */
+  queryCustomMessage = (params: RequestParams = {}) =>
+    this.request<VoterQueryGetCustomMessageResponse, RpcStatus>({
+      path: `/cosmonaut/voter/voter/customMessage`,
+      method: "GET",
+      format: "json",
+      ...params,
+    });
+
   /**
    * No description
    *

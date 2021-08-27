@@ -2,6 +2,293 @@
 import { Reader, util, configure, Writer } from 'protobufjs/minimal';
 import * as Long from 'long';
 export const protobufPackage = 'cosmonaut.voter.voter';
+const baseMsgCreateCustomMessage = { creator: '', customValue: '' };
+export const MsgCreateCustomMessage = {
+    encode(message, writer = Writer.create()) {
+        if (message.creator !== '') {
+            writer.uint32(10).string(message.creator);
+        }
+        if (message.customValue !== '') {
+            writer.uint32(26).string(message.customValue);
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof Uint8Array ? new Reader(input) : input;
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseMsgCreateCustomMessage };
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.creator = reader.string();
+                    break;
+                case 3:
+                    message.customValue = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        const message = { ...baseMsgCreateCustomMessage };
+        if (object.creator !== undefined && object.creator !== null) {
+            message.creator = String(object.creator);
+        }
+        else {
+            message.creator = '';
+        }
+        if (object.customValue !== undefined && object.customValue !== null) {
+            message.customValue = String(object.customValue);
+        }
+        else {
+            message.customValue = '';
+        }
+        return message;
+    },
+    toJSON(message) {
+        const obj = {};
+        message.creator !== undefined && (obj.creator = message.creator);
+        message.customValue !== undefined && (obj.customValue = message.customValue);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = { ...baseMsgCreateCustomMessage };
+        if (object.creator !== undefined && object.creator !== null) {
+            message.creator = object.creator;
+        }
+        else {
+            message.creator = '';
+        }
+        if (object.customValue !== undefined && object.customValue !== null) {
+            message.customValue = object.customValue;
+        }
+        else {
+            message.customValue = '';
+        }
+        return message;
+    }
+};
+const baseMsgCreateCustomMessageResponse = {};
+export const MsgCreateCustomMessageResponse = {
+    encode(_, writer = Writer.create()) {
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof Uint8Array ? new Reader(input) : input;
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseMsgCreateCustomMessageResponse };
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(_) {
+        const message = { ...baseMsgCreateCustomMessageResponse };
+        return message;
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
+    },
+    fromPartial(_) {
+        const message = { ...baseMsgCreateCustomMessageResponse };
+        return message;
+    }
+};
+const baseMsgUpdateCustomMessage = { creator: '', customValue: '' };
+export const MsgUpdateCustomMessage = {
+    encode(message, writer = Writer.create()) {
+        if (message.creator !== '') {
+            writer.uint32(10).string(message.creator);
+        }
+        if (message.customValue !== '') {
+            writer.uint32(26).string(message.customValue);
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof Uint8Array ? new Reader(input) : input;
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseMsgUpdateCustomMessage };
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.creator = reader.string();
+                    break;
+                case 3:
+                    message.customValue = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        const message = { ...baseMsgUpdateCustomMessage };
+        if (object.creator !== undefined && object.creator !== null) {
+            message.creator = String(object.creator);
+        }
+        else {
+            message.creator = '';
+        }
+        if (object.customValue !== undefined && object.customValue !== null) {
+            message.customValue = String(object.customValue);
+        }
+        else {
+            message.customValue = '';
+        }
+        return message;
+    },
+    toJSON(message) {
+        const obj = {};
+        message.creator !== undefined && (obj.creator = message.creator);
+        message.customValue !== undefined && (obj.customValue = message.customValue);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = { ...baseMsgUpdateCustomMessage };
+        if (object.creator !== undefined && object.creator !== null) {
+            message.creator = object.creator;
+        }
+        else {
+            message.creator = '';
+        }
+        if (object.customValue !== undefined && object.customValue !== null) {
+            message.customValue = object.customValue;
+        }
+        else {
+            message.customValue = '';
+        }
+        return message;
+    }
+};
+const baseMsgUpdateCustomMessageResponse = {};
+export const MsgUpdateCustomMessageResponse = {
+    encode(_, writer = Writer.create()) {
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof Uint8Array ? new Reader(input) : input;
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseMsgUpdateCustomMessageResponse };
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(_) {
+        const message = { ...baseMsgUpdateCustomMessageResponse };
+        return message;
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
+    },
+    fromPartial(_) {
+        const message = { ...baseMsgUpdateCustomMessageResponse };
+        return message;
+    }
+};
+const baseMsgDeleteCustomMessage = { creator: '' };
+export const MsgDeleteCustomMessage = {
+    encode(message, writer = Writer.create()) {
+        if (message.creator !== '') {
+            writer.uint32(10).string(message.creator);
+        }
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof Uint8Array ? new Reader(input) : input;
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseMsgDeleteCustomMessage };
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                case 1:
+                    message.creator = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(object) {
+        const message = { ...baseMsgDeleteCustomMessage };
+        if (object.creator !== undefined && object.creator !== null) {
+            message.creator = String(object.creator);
+        }
+        else {
+            message.creator = '';
+        }
+        return message;
+    },
+    toJSON(message) {
+        const obj = {};
+        message.creator !== undefined && (obj.creator = message.creator);
+        return obj;
+    },
+    fromPartial(object) {
+        const message = { ...baseMsgDeleteCustomMessage };
+        if (object.creator !== undefined && object.creator !== null) {
+            message.creator = object.creator;
+        }
+        else {
+            message.creator = '';
+        }
+        return message;
+    }
+};
+const baseMsgDeleteCustomMessageResponse = {};
+export const MsgDeleteCustomMessageResponse = {
+    encode(_, writer = Writer.create()) {
+        return writer;
+    },
+    decode(input, length) {
+        const reader = input instanceof Uint8Array ? new Reader(input) : input;
+        let end = length === undefined ? reader.len : reader.pos + length;
+        const message = { ...baseMsgDeleteCustomMessageResponse };
+        while (reader.pos < end) {
+            const tag = reader.uint32();
+            switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+            }
+        }
+        return message;
+    },
+    fromJSON(_) {
+        const message = { ...baseMsgDeleteCustomMessageResponse };
+        return message;
+    },
+    toJSON(_) {
+        const obj = {};
+        return obj;
+    },
+    fromPartial(_) {
+        const message = { ...baseMsgDeleteCustomMessageResponse };
+        return message;
+    }
+};
 const baseMsgCreateVote = { creator: '', pollID: '', option: '' };
 export const MsgCreateVote = {
     encode(message, writer = Writer.create()) {
@@ -781,6 +1068,21 @@ export const MsgDeletePollResponse = {
 export class MsgClientImpl {
     constructor(rpc) {
         this.rpc = rpc;
+    }
+    CreateCustomMessage(request) {
+        const data = MsgCreateCustomMessage.encode(request).finish();
+        const promise = this.rpc.request('cosmonaut.voter.voter.Msg', 'CreateCustomMessage', data);
+        return promise.then((data) => MsgCreateCustomMessageResponse.decode(new Reader(data)));
+    }
+    UpdateCustomMessage(request) {
+        const data = MsgUpdateCustomMessage.encode(request).finish();
+        const promise = this.rpc.request('cosmonaut.voter.voter.Msg', 'UpdateCustomMessage', data);
+        return promise.then((data) => MsgUpdateCustomMessageResponse.decode(new Reader(data)));
+    }
+    DeleteCustomMessage(request) {
+        const data = MsgDeleteCustomMessage.encode(request).finish();
+        const promise = this.rpc.request('cosmonaut.voter.voter.Msg', 'DeleteCustomMessage', data);
+        return promise.then((data) => MsgDeleteCustomMessageResponse.decode(new Reader(data)));
     }
     CreateVote(request) {
         const data = MsgCreateVote.encode(request).finish();

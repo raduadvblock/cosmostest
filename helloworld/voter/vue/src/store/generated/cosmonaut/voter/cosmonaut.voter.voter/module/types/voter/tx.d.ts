@@ -1,6 +1,23 @@
 import { Reader, Writer } from 'protobufjs/minimal';
 export declare const protobufPackage = "cosmonaut.voter.voter";
 /** this line is used by starport scaffolding # proto/tx/message */
+export interface MsgCreateCustomMessage {
+    creator: string;
+    customValue: string;
+}
+export interface MsgCreateCustomMessageResponse {
+}
+export interface MsgUpdateCustomMessage {
+    creator: string;
+    customValue: string;
+}
+export interface MsgUpdateCustomMessageResponse {
+}
+export interface MsgDeleteCustomMessage {
+    creator: string;
+}
+export interface MsgDeleteCustomMessageResponse {
+}
 export interface MsgCreateVote {
     creator: string;
     pollID: string;
@@ -45,6 +62,48 @@ export interface MsgDeletePoll {
 }
 export interface MsgDeletePollResponse {
 }
+export declare const MsgCreateCustomMessage: {
+    encode(message: MsgCreateCustomMessage, writer?: Writer): Writer;
+    decode(input: Reader | Uint8Array, length?: number): MsgCreateCustomMessage;
+    fromJSON(object: any): MsgCreateCustomMessage;
+    toJSON(message: MsgCreateCustomMessage): unknown;
+    fromPartial(object: DeepPartial<MsgCreateCustomMessage>): MsgCreateCustomMessage;
+};
+export declare const MsgCreateCustomMessageResponse: {
+    encode(_: MsgCreateCustomMessageResponse, writer?: Writer): Writer;
+    decode(input: Reader | Uint8Array, length?: number): MsgCreateCustomMessageResponse;
+    fromJSON(_: any): MsgCreateCustomMessageResponse;
+    toJSON(_: MsgCreateCustomMessageResponse): unknown;
+    fromPartial(_: DeepPartial<MsgCreateCustomMessageResponse>): MsgCreateCustomMessageResponse;
+};
+export declare const MsgUpdateCustomMessage: {
+    encode(message: MsgUpdateCustomMessage, writer?: Writer): Writer;
+    decode(input: Reader | Uint8Array, length?: number): MsgUpdateCustomMessage;
+    fromJSON(object: any): MsgUpdateCustomMessage;
+    toJSON(message: MsgUpdateCustomMessage): unknown;
+    fromPartial(object: DeepPartial<MsgUpdateCustomMessage>): MsgUpdateCustomMessage;
+};
+export declare const MsgUpdateCustomMessageResponse: {
+    encode(_: MsgUpdateCustomMessageResponse, writer?: Writer): Writer;
+    decode(input: Reader | Uint8Array, length?: number): MsgUpdateCustomMessageResponse;
+    fromJSON(_: any): MsgUpdateCustomMessageResponse;
+    toJSON(_: MsgUpdateCustomMessageResponse): unknown;
+    fromPartial(_: DeepPartial<MsgUpdateCustomMessageResponse>): MsgUpdateCustomMessageResponse;
+};
+export declare const MsgDeleteCustomMessage: {
+    encode(message: MsgDeleteCustomMessage, writer?: Writer): Writer;
+    decode(input: Reader | Uint8Array, length?: number): MsgDeleteCustomMessage;
+    fromJSON(object: any): MsgDeleteCustomMessage;
+    toJSON(message: MsgDeleteCustomMessage): unknown;
+    fromPartial(object: DeepPartial<MsgDeleteCustomMessage>): MsgDeleteCustomMessage;
+};
+export declare const MsgDeleteCustomMessageResponse: {
+    encode(_: MsgDeleteCustomMessageResponse, writer?: Writer): Writer;
+    decode(input: Reader | Uint8Array, length?: number): MsgDeleteCustomMessageResponse;
+    fromJSON(_: any): MsgDeleteCustomMessageResponse;
+    toJSON(_: MsgDeleteCustomMessageResponse): unknown;
+    fromPartial(_: DeepPartial<MsgDeleteCustomMessageResponse>): MsgDeleteCustomMessageResponse;
+};
 export declare const MsgCreateVote: {
     encode(message: MsgCreateVote, writer?: Writer): Writer;
     decode(input: Reader | Uint8Array, length?: number): MsgCreateVote;
@@ -132,6 +191,9 @@ export declare const MsgDeletePollResponse: {
 /** Msg defines the Msg service. */
 export interface Msg {
     /** this line is used by starport scaffolding # proto/tx/rpc */
+    CreateCustomMessage(request: MsgCreateCustomMessage): Promise<MsgCreateCustomMessageResponse>;
+    UpdateCustomMessage(request: MsgUpdateCustomMessage): Promise<MsgUpdateCustomMessageResponse>;
+    DeleteCustomMessage(request: MsgDeleteCustomMessage): Promise<MsgDeleteCustomMessageResponse>;
     CreateVote(request: MsgCreateVote): Promise<MsgCreateVoteResponse>;
     UpdateVote(request: MsgUpdateVote): Promise<MsgUpdateVoteResponse>;
     DeleteVote(request: MsgDeleteVote): Promise<MsgDeleteVoteResponse>;
@@ -142,6 +204,9 @@ export interface Msg {
 export declare class MsgClientImpl implements Msg {
     private readonly rpc;
     constructor(rpc: Rpc);
+    CreateCustomMessage(request: MsgCreateCustomMessage): Promise<MsgCreateCustomMessageResponse>;
+    UpdateCustomMessage(request: MsgUpdateCustomMessage): Promise<MsgUpdateCustomMessageResponse>;
+    DeleteCustomMessage(request: MsgDeleteCustomMessage): Promise<MsgDeleteCustomMessageResponse>;
     CreateVote(request: MsgCreateVote): Promise<MsgCreateVoteResponse>;
     UpdateVote(request: MsgUpdateVote): Promise<MsgUpdateVoteResponse>;
     DeleteVote(request: MsgDeleteVote): Promise<MsgDeleteVoteResponse>;

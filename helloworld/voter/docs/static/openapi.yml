@@ -4,6 +4,45 @@ info:
   name: ''
   description: ''
 paths:
+  /cosmonaut/voter/voter/customMessage:
+    get:
+      summary: Queries a customMessage by index.
+      operationId: CosmonautVoterVoterCustomMessage
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              CustomMessage:
+                type: object
+                properties:
+                  creator:
+                    type: string
+                  customValue:
+                    type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    typeUrl:
+                      type: string
+                    value:
+                      type: string
+                      format: byte
+      tags:
+        - Query
   /cosmonaut/voter/voter/poll:
     get:
       summary: Queries a list of poll items.
@@ -19820,6 +19859,15 @@ paths:
       tags:
         - Query
 definitions:
+  cosmonaut.voter.voter.CustomMessage:
+    type: object
+    properties:
+      creator:
+        type: string
+      customValue:
+        type: string
+  cosmonaut.voter.voter.MsgCreateCustomMessageResponse:
+    type: object
   cosmonaut.voter.voter.MsgCreatePollResponse:
     type: object
     properties:
@@ -19832,9 +19880,13 @@ definitions:
       id:
         type: string
         format: uint64
+  cosmonaut.voter.voter.MsgDeleteCustomMessageResponse:
+    type: object
   cosmonaut.voter.voter.MsgDeletePollResponse:
     type: object
   cosmonaut.voter.voter.MsgDeleteVoteResponse:
+    type: object
+  cosmonaut.voter.voter.MsgUpdateCustomMessageResponse:
     type: object
   cosmonaut.voter.voter.MsgUpdatePollResponse:
     type: object
@@ -19940,6 +19992,16 @@ definitions:
                    repeated Bar results = 1;
                    PageResponse page = 2;
            }
+  cosmonaut.voter.voter.QueryGetCustomMessageResponse:
+    type: object
+    properties:
+      CustomMessage:
+        type: object
+        properties:
+          creator:
+            type: string
+          customValue:
+            type: string
   cosmonaut.voter.voter.QueryGetPollResponse:
     type: object
     properties:

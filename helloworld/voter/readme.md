@@ -1,10 +1,25 @@
-# voter
-**voter** is a blockchain built using Cosmos SDK and Tendermint and created with [Starport](https://github.com/tendermint/starport).
+# Pre Requirements:
+**Starport**
+Install the Latest Version of Starport
+To install the latest stable version, run the following command:
+curl https://get.starport.network/starport! | bash
+
+**Golang**
+Min golang version: 1.17
+
+Please set the GOROOT and GOPATH. Details here:
+https://golang.org/doc/gopath_code#GOPATH
+https://pkg.go.dev/cmd/go#hdr-GOPATH_environment_variable
+https://golangdocs.com/gopath-and-goroot-in-go-programming
+
+
+**NodeJS**
+Min NodeJS version: 12.14.0
 
 ## Get started
 
-## Install startport
-curl https://get.starport.network/starport@v0.17.0! | bash
+# voter
+**voter** is a blockchain built using Cosmos SDK and Tendermint and created with Starport.
 
 ```
 cd helloworld/voter
@@ -43,3 +58,30 @@ The frontend app is built using the `@starport/vue` and `@starport/vuex` package
 - [Cosmos SDK documentation](https://docs.cosmos.network)
 - [Cosmos SDK Tutorials](https://tutorials.cosmos.network)
 - [Discord](https://discord.gg/W8trcGV)
+
+
+## Modify the CLI Transaction
+A poll app end user can also interact with your application by using a command line interface.
+The CLI definition is available at x/voter/client/cli/tx_poll.go and at x/voter/client/cli/tx_vote.go.
+
+**Example:**
+voterd tx voter create-poll "Text editors" "Emacs" "Vim" --from alice
+
+Other commands:
+voterd tx voter update-poll [id] [title] [options]
+voterd tx voter delete-poll [id]
+
+Where:
+* [id] is the pool ID 
+* [title] is the pool title
+* [options] is an array of pool options
+
+From x/voter/client/cli/tx_vote.go
+voterd tx voter create-vote [pollID] [option]
+voterd tx voter update-vote [id] [pollID] [option]
+voterd tx voter delete-vote [id]
+
+Where:
+* [id] is the vote ID
+* [pollID] is the pool ID
+* [option] is teh option text

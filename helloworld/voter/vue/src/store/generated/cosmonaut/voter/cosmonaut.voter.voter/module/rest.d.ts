@@ -59,6 +59,11 @@ export interface V1Beta1PageResponse {
     /** @format uint64 */
     total?: string;
 }
+export interface VoterCustomMessage {
+    creator?: string;
+    customValue?: string;
+}
+export declare type VoterMsgCreateCustomMessageResponse = object;
 export interface VoterMsgCreatePollResponse {
     /** @format uint64 */
     id?: string;
@@ -67,8 +72,10 @@ export interface VoterMsgCreateVoteResponse {
     /** @format uint64 */
     id?: string;
 }
+export declare type VoterMsgDeleteCustomMessageResponse = object;
 export declare type VoterMsgDeletePollResponse = object;
 export declare type VoterMsgDeleteVoteResponse = object;
+export declare type VoterMsgUpdateCustomMessageResponse = object;
 export declare type VoterMsgUpdatePollResponse = object;
 export declare type VoterMsgUpdateVoteResponse = object;
 export interface VoterPoll {
@@ -103,6 +110,9 @@ export interface VoterQueryAllVoteResponse {
      *  }
      */
     pagination?: V1Beta1PageResponse;
+}
+export interface VoterQueryGetCustomMessageResponse {
+    CustomMessage?: VoterCustomMessage;
 }
 export interface VoterQueryGetPollResponse {
     Poll?: VoterPoll;
@@ -171,10 +181,19 @@ export declare class HttpClient<SecurityDataType = unknown> {
     request: <T = any, E = any>({ body, secure, path, type, query, format, baseUrl, cancelToken, ...params }: FullRequestParams) => Promise<HttpResponse<T, E>>;
 }
 /**
- * @title voter/genesis.proto
+ * @title voter/custom_message.proto
  * @version version not set
  */
 export declare class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDataType> {
+    /**
+     * No description
+     *
+     * @tags Query
+     * @name QueryCustomMessage
+     * @summary Queries a customMessage by index.
+     * @request GET:/cosmonaut/voter/voter/customMessage
+     */
+    queryCustomMessage: (params?: RequestParams) => Promise<HttpResponse<VoterQueryGetCustomMessageResponse, RpcStatus>>;
     /**
      * No description
      *

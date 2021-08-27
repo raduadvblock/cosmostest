@@ -1,0 +1,11 @@
+syntax = "proto3";
+package cosmonaut.voter.voter;
+
+option go_package = "github.com/cosmonaut/voter/x/voter/types";
+
+import "gogoproto/gogo.proto";
+
+message CustomMessage {
+  string creator = 1;
+  string customValue = 2; 
+}

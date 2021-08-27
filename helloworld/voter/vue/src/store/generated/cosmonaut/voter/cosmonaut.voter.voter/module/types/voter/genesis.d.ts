@@ -1,10 +1,13 @@
 import { Writer, Reader } from 'protobufjs/minimal';
+import { CustomMessage } from '../voter/custom_message';
 import { Vote } from '../voter/vote';
 import { Poll } from '../voter/poll';
 export declare const protobufPackage = "cosmonaut.voter.voter";
 /** GenesisState defines the voter module's genesis state. */
 export interface GenesisState {
     /** this line is used by starport scaffolding # genesis/proto/state */
+    customMessage: CustomMessage | undefined;
+    /** this line is used by starport scaffolding # genesis/proto/stateField */
     voteList: Vote[];
     /** this line is used by starport scaffolding # genesis/proto/stateField */
     voteCount: number;

@@ -30,6 +30,86 @@ var _ = math.Inf
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 // this line is used by starport scaffolding # 3
+type QueryGetCustomMessageRequest struct {
+}
+
+func (m *QueryGetCustomMessageRequest) Reset()         { *m = QueryGetCustomMessageRequest{} }
+func (m *QueryGetCustomMessageRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryGetCustomMessageRequest) ProtoMessage()    {}
+func (*QueryGetCustomMessageRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c932a2c3a8f1e22, []int{0}
+}
+func (m *QueryGetCustomMessageRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetCustomMessageRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetCustomMessageRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetCustomMessageRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetCustomMessageRequest.Merge(m, src)
+}
+func (m *QueryGetCustomMessageRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetCustomMessageRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetCustomMessageRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetCustomMessageRequest proto.InternalMessageInfo
+
+type QueryGetCustomMessageResponse struct {
+	CustomMessage *CustomMessage `protobuf:"bytes,1,opt,name=CustomMessage,proto3" json:"CustomMessage,omitempty"`
+}
+
+func (m *QueryGetCustomMessageResponse) Reset()         { *m = QueryGetCustomMessageResponse{} }
+func (m *QueryGetCustomMessageResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryGetCustomMessageResponse) ProtoMessage()    {}
+func (*QueryGetCustomMessageResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_3c932a2c3a8f1e22, []int{1}
+}
+func (m *QueryGetCustomMessageResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetCustomMessageResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetCustomMessageResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetCustomMessageResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetCustomMessageResponse.Merge(m, src)
+}
+func (m *QueryGetCustomMessageResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetCustomMessageResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetCustomMessageResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetCustomMessageResponse proto.InternalMessageInfo
+
+func (m *QueryGetCustomMessageResponse) GetCustomMessage() *CustomMessage {
+	if m != nil {
+		return m.CustomMessage
+	}
+	return nil
+}
+
 type QueryGetVoteRequest struct {
 	Id uint64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 }
@@ -38,7 +118,7 @@ func (m *QueryGetVoteRequest) Reset()         { *m = QueryGetVoteRequest{} }
 func (m *QueryGetVoteRequest) String() string { return proto.CompactTextString(m) }
 func (*QueryGetVoteRequest) ProtoMessage()    {}
 func (*QueryGetVoteRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c932a2c3a8f1e22, []int{0}
+	return fileDescriptor_3c932a2c3a8f1e22, []int{2}
 }
 func (m *QueryGetVoteRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -82,7 +162,7 @@ func (m *QueryGetVoteResponse) Reset()         { *m = QueryGetVoteResponse{} }
 func (m *QueryGetVoteResponse) String() string { return proto.CompactTextString(m) }
 func (*QueryGetVoteResponse) ProtoMessage()    {}
 func (*QueryGetVoteResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c932a2c3a8f1e22, []int{1}
+	return fileDescriptor_3c932a2c3a8f1e22, []int{3}
 }
 func (m *QueryGetVoteResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -126,7 +206,7 @@ func (m *QueryAllVoteRequest) Reset()         { *m = QueryAllVoteRequest{} }
 func (m *QueryAllVoteRequest) String() string { return proto.CompactTextString(m) }
 func (*QueryAllVoteRequest) ProtoMessage()    {}
 func (*QueryAllVoteRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c932a2c3a8f1e22, []int{2}
+	return fileDescriptor_3c932a2c3a8f1e22, []int{4}
 }
 func (m *QueryAllVoteRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -171,7 +251,7 @@ func (m *QueryAllVoteResponse) Reset()         { *m = QueryAllVoteResponse{} }
 func (m *QueryAllVoteResponse) String() string { return proto.CompactTextString(m) }
 func (*QueryAllVoteResponse) ProtoMessage()    {}
 func (*QueryAllVoteResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c932a2c3a8f1e22, []int{3}
+	return fileDescriptor_3c932a2c3a8f1e22, []int{5}
 }
 func (m *QueryAllVoteResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -222,7 +302,7 @@ func (m *QueryGetPollRequest) Reset()         { *m = QueryGetPollRequest{} }
 func (m *QueryGetPollRequest) String() string { return proto.CompactTextString(m) }
 func (*QueryGetPollRequest) ProtoMessage()    {}
 func (*QueryGetPollRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c932a2c3a8f1e22, []int{4}
+	return fileDescriptor_3c932a2c3a8f1e22, []int{6}
 }
 func (m *QueryGetPollRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -266,7 +346,7 @@ func (m *QueryGetPollResponse) Reset()         { *m = QueryGetPollResponse{} }
 func (m *QueryGetPollResponse) String() string { return proto.CompactTextString(m) }
 func (*QueryGetPollResponse) ProtoMessage()    {}
 func (*QueryGetPollResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c932a2c3a8f1e22, []int{5}
+	return fileDescriptor_3c932a2c3a8f1e22, []int{7}
 }
 func (m *QueryGetPollResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -310,7 +390,7 @@ func (m *QueryAllPollRequest) Reset()         { *m = QueryAllPollRequest{} }
 func (m *QueryAllPollRequest) String() string { return proto.CompactTextString(m) }
 func (*QueryAllPollRequest) ProtoMessage()    {}
 func (*QueryAllPollRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c932a2c3a8f1e22, []int{6}
+	return fileDescriptor_3c932a2c3a8f1e22, []int{8}
 }
 func (m *QueryAllPollRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -355,7 +435,7 @@ func (m *QueryAllPollResponse) Reset()         { *m = QueryAllPollResponse{} }
 func (m *QueryAllPollResponse) String() string { return proto.CompactTextString(m) }
 func (*QueryAllPollResponse) ProtoMessage()    {}
 func (*QueryAllPollResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_3c932a2c3a8f1e22, []int{7}
+	return fileDescriptor_3c932a2c3a8f1e22, []int{9}
 }
 func (m *QueryAllPollResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -399,6 +479,8 @@ func (m *QueryAllPollResponse) GetPagination() *query.PageResponse {
 }
 
 func init() {
+	proto.RegisterType((*QueryGetCustomMessageRequest)(nil), "cosmonaut.voter.voter.QueryGetCustomMessageRequest")
+	proto.RegisterType((*QueryGetCustomMessageResponse)(nil), "cosmonaut.voter.voter.QueryGetCustomMessageResponse")
 	proto.RegisterType((*QueryGetVoteRequest)(nil), "cosmonaut.voter.voter.QueryGetVoteRequest")
 	proto.RegisterType((*QueryGetVoteResponse)(nil), "cosmonaut.voter.voter.QueryGetVoteResponse")
 	proto.RegisterType((*QueryAllVoteRequest)(nil), "cosmonaut.voter.voter.QueryAllVoteRequest")
@@ -412,37 +494,42 @@ func init() {
 func init() { proto.RegisterFile("voter/query.proto", fileDescriptor_3c932a2c3a8f1e22) }
 
 var fileDescriptor_3c932a2c3a8f1e22 = []byte{
-	// 466 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x94, 0x4f, 0xeb, 0xd3, 0x30,
-	0x18, 0xc7, 0x97, 0xfe, 0xa6, 0x42, 0x04, 0xd1, 0xa8, 0x20, 0x9b, 0x96, 0x51, 0x51, 0xc7, 0x84,
-	0x84, 0xcd, 0x57, 0xb0, 0x1d, 0xdc, 0x75, 0xee, 0xe0, 0x41, 0xf0, 0x90, 0x6e, 0xa1, 0x16, 0xb2,
-	0xa6, 0x5b, 0xd2, 0xe1, 0x10, 0x2f, 0x5e, 0xc4, 0xdb, 0xc0, 0x97, 0xe2, 0x9b, 0xf0, 0x38, 0xf0,
-	0xe2, 0x51, 0x36, 0x5f, 0x88, 0x24, 0xa9, 0x6b, 0xbb, 0x7f, 0xed, 0x41, 0x2f, 0x19, 0xed, 0xbe,
-	0xdf, 0xe7, 0xf9, 0xe4, 0xdb, 0x27, 0x81, 0x77, 0x96, 0x42, 0xb1, 0x05, 0x99, 0x27, 0x6c, 0xb1,
-	0xc2, 0xf1, 0x42, 0x28, 0x81, 0xee, 0x4f, 0x84, 0x9c, 0x89, 0x88, 0x26, 0x0a, 0x9b, 0x3f, 0xed,
-	0xda, 0x78, 0x18, 0x08, 0x11, 0x70, 0x46, 0x68, 0x1c, 0x12, 0x1a, 0x45, 0x42, 0x51, 0x15, 0x8a,
-	0x48, 0x5a, 0x53, 0xa3, 0x63, 0x4c, 0x92, 0xf8, 0x54, 0x32, 0x5b, 0x8d, 0x2c, 0xbb, 0x3e, 0x53,
-	0xb4, 0x4b, 0x62, 0x1a, 0x84, 0x91, 0x11, 0xa7, 0xda, 0xdb, 0xb6, 0xa7, 0x5e, 0x8b, 0x6f, 0x62,
-	0xc1, 0xb9, 0x7d, 0xe3, 0x3d, 0x81, 0x77, 0x5f, 0xe9, 0x2a, 0x43, 0xa6, 0x5e, 0x0b, 0xc5, 0xc6,
-	0x6c, 0x9e, 0x30, 0xa9, 0xd0, 0x2d, 0xe8, 0x84, 0xd3, 0x07, 0xa0, 0x05, 0xda, 0xf5, 0xb1, 0x13,
-	0x4e, 0xbd, 0x21, 0xbc, 0x57, 0x94, 0xc9, 0x58, 0x44, 0x92, 0x21, 0x02, 0xeb, 0xfa, 0xd9, 0x28,
-	0x6f, 0xf6, 0x9a, 0xf8, 0xe4, 0x96, 0xb0, 0xb1, 0x18, 0xa1, 0xf7, 0x36, 0xed, 0xd7, 0xe7, 0x3c,
-	0xdf, 0xef, 0x25, 0x84, 0x19, 0x7e, 0x5a, 0xed, 0xa9, 0xad, 0x26, 0xb1, 0xde, 0x2b, 0xb6, 0xc9,
-	0xa5, 0x7b, 0xc5, 0x23, 0x1a, 0xfc, 0xf5, 0x8e, 0x73, 0x4e, 0x6f, 0x0d, 0x52, 0xd0, 0x7d, 0xfd,
-	0x23, 0xd0, 0xab, 0x4a, 0xa0, 0x68, 0x58, 0x20, 0x72, 0x0c, 0xd1, 0xb3, 0x52, 0x22, 0xdb, 0xad,
-	0x80, 0x94, 0x4b, 0x78, 0x24, 0x38, 0xaf, 0x90, 0xb0, 0x95, 0x65, 0xe0, 0xfa, 0xb9, 0x24, 0x61,
-	0x63, 0x31, 0xc2, 0x7c, 0xc2, 0xf9, 0x7e, 0xff, 0x23, 0xe1, 0x33, 0xa0, 0x57, 0x95, 0x40, 0xff,
-	0x59, 0xc2, 0xbd, 0x6f, 0x75, 0x78, 0xcd, 0x20, 0xa1, 0x2f, 0xc0, 0x7e, 0x66, 0xd4, 0x39, 0xd3,
-	0xfe, 0xc4, 0xac, 0x37, 0x9e, 0x57, 0xd2, 0xda, 0xbe, 0x5e, 0xfb, 0xd3, 0x8f, 0xdf, 0x5f, 0x1d,
-	0x0f, 0xb5, 0xc8, 0xde, 0x44, 0xb2, 0x63, 0x66, 0x57, 0xf2, 0x21, 0x9c, 0x7e, 0x44, 0x9f, 0x01,
-	0xbc, 0xa1, 0xad, 0x7d, 0xce, 0x2f, 0xe3, 0x14, 0x8f, 0xc2, 0x65, 0x9c, 0x83, 0xb1, 0xf6, 0x1e,
-	0x1b, 0x9c, 0x47, 0xa8, 0x79, 0x01, 0xc7, 0xa4, 0x62, 0x12, 0x2f, 0x4b, 0x25, 0x37, 0x2f, 0xa5,
-	0xa9, 0xe4, 0xbf, 0x7d, 0x69, 0x2a, 0xfa, 0xc2, 0xc9, 0x52, 0xd1, 0xd6, 0x2a, 0xa9, 0x54, 0xc6,
-	0x39, 0x18, 0xc5, 0xd2, 0x54, 0x34, 0xce, 0x60, 0xf0, 0x7d, 0xeb, 0x82, 0xcd, 0xd6, 0x05, 0xbf,
-	0xb6, 0x2e, 0x58, 0xef, 0xdc, 0xda, 0x66, 0xe7, 0xd6, 0x7e, 0xee, 0xdc, 0xda, 0x9b, 0x76, 0x10,
-	0xaa, 0x77, 0x89, 0x8f, 0x27, 0x62, 0x76, 0x54, 0xe0, 0x7d, 0xfa, 0xab, 0x56, 0x31, 0x93, 0xfe,
-	0x75, 0x73, 0x89, 0xbe, 0xf8, 0x13, 0x00, 0x00, 0xff, 0xff, 0x76, 0xe5, 0x2e, 0xad, 0xde, 0x05,
-	0x00, 0x00,
+	// 550 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x95, 0x4d, 0x6b, 0x13, 0x41,
+	0x18, 0xc7, 0x33, 0x69, 0xab, 0x30, 0xa2, 0xe8, 0xa8, 0x20, 0xdb, 0x76, 0x29, 0x63, 0xad, 0xa1,
+	0xca, 0x0e, 0x6d, 0xfd, 0x02, 0xad, 0x60, 0x40, 0x10, 0x6a, 0x0e, 0x1e, 0x04, 0x91, 0x4d, 0x32,
+	0xac, 0x8b, 0x93, 0x9d, 0x6d, 0x66, 0xb6, 0x58, 0xc4, 0x8b, 0x17, 0xf1, 0x56, 0xf0, 0x4b, 0xf8,
+	0x51, 0x3c, 0x16, 0xbc, 0x78, 0x12, 0x49, 0xfc, 0x20, 0x32, 0x2f, 0xe9, 0xee, 0x24, 0xee, 0x8b,
+	0x60, 0x2f, 0x13, 0x76, 0x9f, 0xe7, 0xff, 0x3c, 0xbf, 0xfc, 0x67, 0x9e, 0x59, 0x78, 0xe3, 0x98,
+	0x4b, 0x3a, 0x26, 0x47, 0x19, 0x1d, 0x9f, 0x04, 0xe9, 0x98, 0x4b, 0x8e, 0x6e, 0x0f, 0xb8, 0x18,
+	0xf1, 0x24, 0xcc, 0x64, 0xa0, 0x83, 0x66, 0xf5, 0xd6, 0x22, 0xce, 0x23, 0x46, 0x49, 0x98, 0xc6,
+	0x24, 0x4c, 0x12, 0x2e, 0x43, 0x19, 0xf3, 0x44, 0x18, 0x91, 0xb7, 0xad, 0x45, 0x82, 0xf4, 0x43,
+	0x41, 0x4d, 0x35, 0x72, 0xbc, 0xd3, 0xa7, 0x32, 0xdc, 0x21, 0x69, 0x18, 0xc5, 0x89, 0x4e, 0xb6,
+	0xb9, 0x9e, 0xe9, 0x39, 0xc8, 0x84, 0xe4, 0xa3, 0xd7, 0x23, 0x2a, 0x44, 0x18, 0x51, 0x1b, 0xbb,
+	0x6e, 0x62, 0x6a, 0x75, 0xdf, 0xa4, 0x9c, 0x31, 0xf3, 0x06, 0xfb, 0x70, 0xed, 0xb9, 0xea, 0xd0,
+	0xa5, 0xf2, 0xb1, 0xae, 0xf1, 0xcc, 0x94, 0xe8, 0xd1, 0xa3, 0x8c, 0x0a, 0x89, 0xdf, 0xc2, 0xf5,
+	0x92, 0xb8, 0x48, 0x79, 0x22, 0x28, 0x7a, 0x0a, 0xaf, 0x3a, 0x81, 0x3b, 0x60, 0x03, 0x74, 0xae,
+	0xec, 0x6e, 0x06, 0x7f, 0xfd, 0xe7, 0x81, 0x5b, 0xc4, 0x95, 0xe2, 0x7b, 0xf0, 0xe6, 0xac, 0xd9,
+	0x0b, 0x2e, 0x67, 0x0c, 0xe8, 0x1a, 0x6c, 0xc7, 0x43, 0x5d, 0x77, 0xb9, 0xd7, 0x8e, 0x87, 0xb8,
+	0x0b, 0x6f, 0xb9, 0x69, 0x16, 0x85, 0xc0, 0x65, 0xf5, 0x6c, 0x09, 0x56, 0x4b, 0x08, 0xb4, 0x44,
+	0x27, 0xe2, 0x57, 0xb6, 0xdf, 0x3e, 0x63, 0xc5, 0x7e, 0x4f, 0x20, 0xcc, 0x7d, 0xb6, 0xd5, 0xb6,
+	0x4c, 0x35, 0x11, 0xa8, 0x4d, 0x09, 0xcc, 0x16, 0xdb, 0x4d, 0x09, 0x0e, 0x73, 0xbf, 0x7a, 0x05,
+	0x25, 0x3e, 0x05, 0x16, 0xf4, 0xbc, 0xfe, 0x02, 0xe8, 0x52, 0x23, 0x50, 0xd4, 0x75, 0x88, 0xda,
+	0x9a, 0xe8, 0x7e, 0x2d, 0x91, 0xe9, 0xe6, 0x20, 0x15, 0x1c, 0x3e, 0xe4, 0x8c, 0x35, 0x70, 0xd8,
+	0xa4, 0xe5, 0xe0, 0xea, 0xb9, 0xc6, 0x61, 0x2d, 0xd1, 0x89, 0x45, 0x87, 0x8b, 0xfd, 0x2e, 0xc2,
+	0xe1, 0x12, 0xd0, 0xa5, 0x46, 0xa0, 0xff, 0xcd, 0xe1, 0xdd, 0x9f, 0x2b, 0x70, 0x45, 0x23, 0xa1,
+	0xaf, 0x60, 0x6e, 0x34, 0xd0, 0x5e, 0x09, 0x47, 0xd5, 0x04, 0x7a, 0x8f, 0xfe, 0x4d, 0x64, 0x90,
+	0xf0, 0xc3, 0x8f, 0xdf, 0x7f, 0x7f, 0x69, 0x6f, 0xa1, 0x4d, 0x72, 0xae, 0x26, 0xf9, 0x75, 0x30,
+	0xbb, 0x30, 0x66, 0x60, 0x9f, 0x81, 0x39, 0x91, 0x68, 0xbb, 0xa6, 0x59, 0x61, 0x4c, 0xbc, 0x07,
+	0x8d, 0x72, 0x2d, 0x4f, 0x47, 0xf3, 0x60, 0xb4, 0x51, 0xc2, 0xa3, 0x56, 0xf2, 0x3e, 0x1e, 0x7e,
+	0x40, 0x9f, 0x00, 0xbc, 0xac, 0xa4, 0xfb, 0x8c, 0x55, 0xe3, 0xb8, 0x53, 0x5b, 0x8d, 0x33, 0x37,
+	0x81, 0xf8, 0xae, 0xc6, 0x59, 0x47, 0xab, 0x15, 0x38, 0xda, 0x15, 0x7d, 0x38, 0xea, 0x5c, 0x29,
+	0x1c, 0xed, 0x5a, 0x57, 0x8a, 0xc7, 0xb4, 0xd6, 0x15, 0x75, 0x51, 0xe7, 0xae, 0x28, 0x69, 0x13,
+	0x57, 0x1a, 0xe3, 0xcc, 0x4d, 0x4d, 0xad, 0x2b, 0x0a, 0xe7, 0xe0, 0xe0, 0xdb, 0xc4, 0x07, 0x67,
+	0x13, 0x1f, 0xfc, 0x9a, 0xf8, 0xe0, 0x74, 0xea, 0xb7, 0xce, 0xa6, 0x7e, 0xeb, 0xc7, 0xd4, 0x6f,
+	0xbd, 0xec, 0x44, 0xb1, 0x7c, 0x93, 0xf5, 0x83, 0x01, 0x1f, 0x2d, 0x14, 0x78, 0x67, 0x7f, 0xe5,
+	0x49, 0x4a, 0x45, 0xff, 0x92, 0xfe, 0xf8, 0xec, 0xfd, 0x09, 0x00, 0x00, 0xff, 0xff, 0xca, 0xdf,
+	0xea, 0x30, 0x32, 0x07, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -457,6 +544,8 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type QueryClient interface {
+	// Queries a customMessage by index.
+	CustomMessage(ctx context.Context, in *QueryGetCustomMessageRequest, opts ...grpc.CallOption) (*QueryGetCustomMessageResponse, error)
 	// Queries a vote by id.
 	Vote(ctx context.Context, in *QueryGetVoteRequest, opts ...grpc.CallOption) (*QueryGetVoteResponse, error)
 	// Queries a list of vote items.
@@ -473,6 +562,15 @@ type queryClient struct {
 
 func NewQueryClient(cc grpc1.ClientConn) QueryClient {
 	return &queryClient{cc}
+}
+
+func (c *queryClient) CustomMessage(ctx context.Context, in *QueryGetCustomMessageRequest, opts ...grpc.CallOption) (*QueryGetCustomMessageResponse, error) {
+	out := new(QueryGetCustomMessageResponse)
+	err := c.cc.Invoke(ctx, "/cosmonaut.voter.voter.Query/CustomMessage", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *queryClient) Vote(ctx context.Context, in *QueryGetVoteRequest, opts ...grpc.CallOption) (*QueryGetVoteResponse, error) {
@@ -513,6 +611,8 @@ func (c *queryClient) PollAll(ctx context.Context, in *QueryAllPollRequest, opts
 
 // QueryServer is the server API for Query service.
 type QueryServer interface {
+	// Queries a customMessage by index.
+	CustomMessage(context.Context, *QueryGetCustomMessageRequest) (*QueryGetCustomMessageResponse, error)
 	// Queries a vote by id.
 	Vote(context.Context, *QueryGetVoteRequest) (*QueryGetVoteResponse, error)
 	// Queries a list of vote items.
@@ -527,6 +627,9 @@ type QueryServer interface {
 type UnimplementedQueryServer struct {
 }
 
+func (*UnimplementedQueryServer) CustomMessage(ctx context.Context, req *QueryGetCustomMessageRequest) (*QueryGetCustomMessageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CustomMessage not implemented")
+}
 func (*UnimplementedQueryServer) Vote(ctx context.Context, req *QueryGetVoteRequest) (*QueryGetVoteResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Vote not implemented")
 }
@@ -542,6 +645,24 @@ func (*UnimplementedQueryServer) PollAll(ctx context.Context, req *QueryAllPollR
 
 func RegisterQueryServer(s grpc1.Server, srv QueryServer) {
 	s.RegisterService(&_Query_serviceDesc, srv)
+}
+
+func _Query_CustomMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetCustomMessageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).CustomMessage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/cosmonaut.voter.voter.Query/CustomMessage",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).CustomMessage(ctx, req.(*QueryGetCustomMessageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _Query_Vote_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -621,6 +742,10 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*QueryServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
+			MethodName: "CustomMessage",
+			Handler:    _Query_CustomMessage_Handler,
+		},
+		{
 			MethodName: "Vote",
 			Handler:    _Query_Vote_Handler,
 		},
@@ -639,6 +764,64 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "voter/query.proto",
+}
+
+func (m *QueryGetCustomMessageRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetCustomMessageRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetCustomMessageRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryGetCustomMessageResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetCustomMessageResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetCustomMessageResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.CustomMessage != nil {
+		{
+			size, err := m.CustomMessage.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
 }
 
 func (m *QueryGetVoteRequest) Marshal() (dAtA []byte, err error) {
@@ -946,6 +1129,28 @@ func encodeVarintQuery(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return base
 }
+func (m *QueryGetCustomMessageRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *QueryGetCustomMessageResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.CustomMessage != nil {
+		l = m.CustomMessage.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
 func (m *QueryGetVoteRequest) Size() (n int) {
 	if m == nil {
 		return 0
@@ -1065,6 +1270,142 @@ func sovQuery(x uint64) (n int) {
 }
 func sozQuery(x uint64) (n int) {
 	return sovQuery(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+}
+func (m *QueryGetCustomMessageRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetCustomMessageRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetCustomMessageRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetCustomMessageResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetCustomMessageResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetCustomMessageResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CustomMessage", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.CustomMessage == nil {
+				m.CustomMessage = &CustomMessage{}
+			}
+			if err := m.CustomMessage.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
 }
 func (m *QueryGetVoteRequest) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
